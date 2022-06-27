@@ -28,8 +28,6 @@ namespace WORK_ONE.View_Models
                 if (!item.MainImagePath.Contains(path) && !item.MainImagePath.Contains("/"))
                     item.MainImagePath = path + item.MainImagePath;
                 item.Cost = Math.Round(item.Cost);
-                if (item.DurationInSeconds > 60)
-                    item.DurationInSeconds /= 60;
                 if (item.Discount < 1)
                     item.Discount *= 100;
             }

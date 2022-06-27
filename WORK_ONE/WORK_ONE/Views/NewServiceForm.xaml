@@ -47,12 +47,38 @@
             <Border Style="{StaticResource BorderTextArea}">
                 <TextBox x:Name="DiscountText" Text="{Binding Discount}" MaxLength="2" PreviewTextInput="TextBox_PreviewTextInput"/>
             </Border>
-            <TextBlock Visibility="Collapsed" x:Name="ImagePath" Text="{Binding MainImagePath}" TextWrapping="Wrap" />
-                <StackPanel Orientation="Horizontal">
-                <Border Style="{StaticResource BorderImage}">
-                    <Image x:Name="Miniature" Source="/Resourses/Images/DesignWindows/logo.png"/>
+            <TextBlock Visibility="Collapsed" x:Name="ImagePathMain" Text="{Binding MainImagePath}"/>
+            <TextBlock Visibility="Collapsed" x:Name="ImagePath1"/>
+            <TextBlock Visibility="Collapsed" x:Name="ImagePath2"/>
+            <TextBlock Visibility="Collapsed" x:Name="ImagePath3"/>
+            <StackPanel Orientation="Horizontal">
+                <Border Style="{StaticResource BorderImage}" BorderBrush="#ff4a6d" BorderThickness="2" Margin="30 0 0 0">
+                    <Grid>
+                        <Image x:Name="Miniature" Source="{Binding MainImagePath}"/>
+                        <Button Content="Выбрать" VerticalAlignment="Bottom" Margin="0 0 10 0" Width="55" x:Name="OpenImageButton" Style="{StaticResource SelectImageButton}" Click="OpenImageButton_Click"/>
+                    </Grid>
                 </Border>
-                <Button Content="Выбрать изображение" VerticalAlignment="Top" Margin="190 0 0 0" x:Name="OpenImageButton" Style="{StaticResource SelectImageButton}" Click="OpenImageButton_Click"/>
+                <Border Style="{StaticResource BorderImage}">
+                    <Grid>
+                        <Image x:Name="MiniatureTwo"/>
+                        <Button Content="Выбрать" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0 0 10 0" Width="45" x:Name="OpenDopOneImageButton" Style="{StaticResource SelectImageButton}" Click="OpenDopOneImageButton_Click" FontSize="10"/>
+                        <Button Content="Удалить" VerticalAlignment="Bottom" Margin="0 0 0 0" Width="40" x:Name="DeleteDopOneImgButton" Style="{StaticResource SelectImageButton}" Click="DeleteDopOneImgButton_Click" FontSize="10"/>
+                    </Grid>
+                </Border>
+                <Border Style="{StaticResource BorderImage}">
+                    <Grid>
+                        <Image x:Name="MiniatureThree"/>
+                        <Button Content="Выбрать" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0 0 10 0" Width="45" x:Name="OpenDopTwoImageButton" Style="{StaticResource SelectImageButton}" Click="OpenDopTwoImageButton_Click" FontSize="10"/>
+                        <Button Content="Удалить" VerticalAlignment="Bottom" Margin="0 0 0 0" Width="45" x:Name="DeleteDopTwoImgButton" Style="{StaticResource SelectImageButton}" Click="DeleteDopTwoImgButton_Click" FontSize="10"/>
+                    </Grid>
+                </Border>
+                <Border Style="{StaticResource BorderImage}">
+                    <Grid>
+                        <Image x:Name="MiniatureFour"/>
+                        <Button Content="Выбрать" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0 0 10 0" Width="45" x:Name="OpenDopThreeImageButton" Style="{StaticResource SelectImageButton}" Click="OpenDopThreeImageButton_Click" FontSize="10"/>
+                        <Button Content="Удалить" VerticalAlignment="Bottom" Margin="0 0 0 0" Width="45" x:Name="DeleteDopThreeImgButton" Style="{StaticResource SelectImageButton}" Click="DeleteDopThreeImgButton_Click" FontSize="10"/>
+                    </Grid>
+                </Border>
             </StackPanel>
             <Button Content="Сохранить" x:Name="SaveButton" Click="SaveButton_Click" Style="{StaticResource EnterButtonStyle}"/>
         </StackPanel>

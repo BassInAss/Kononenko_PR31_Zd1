@@ -71,7 +71,9 @@
     <Compile Include="Converters\DiscountConverter.cs" />
     <Compile Include="Converters\DiscountToStrikelineConverter.cs" />
     <Compile Include="View-Models\AddClientServiceViewModel.cs" />
+    <Compile Include="View-Models\DeleteDopImage.cs" />
     <Compile Include="View-Models\LoadClientsToCombo.cs" />
+    <Compile Include="View-Models\LoadDopImages.cs" />
     <Compile Include="Views\AddClientToService.xaml.cs">
       <DependentUpon>AddClientToService.xaml</DependentUpon>
     </Compile>

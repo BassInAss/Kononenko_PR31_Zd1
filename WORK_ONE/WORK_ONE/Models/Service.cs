@@ -11,9 +11,16 @@ namespace WORK_ONE.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Service
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+
+    public partial class Service : INotifyPropertyChanged
     {
+        private string title;
+        private decimal cost;
+        private int durationInSeconds;
+        private Nullable<double> discount;
+        public string mainImagePath;
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Service()
         {
@@ -22,16 +29,63 @@ namespace WORK_ONE.Models
         }
     
         public int ID { get; set; }
-        public string Title { get; set; }
-        public decimal Cost { get; set; }
-        public int DurationInSeconds { get; set; }
+        public string Title 
+        {
+            get {return title; }
+            set 
+            {
+                title = value;
+                OnPropertyChanged("Title");
+            } 
+        }
+        public decimal Cost 
+        {
+            get { return cost; }
+            set
+            {
+                cost = value;
+                OnPropertyChanged("Cost");
+            }
+        }
+        public int DurationInSeconds 
+        {
+            get { return durationInSeconds; }
+            set
+            {
+                durationInSeconds = value;
+                OnPropertyChanged("DurationInSeconds");
+            }
+        }
         public string Description { get; set; }
-        public Nullable<double> Discount { get; set; }
-        public string MainImagePath { get; set; }
+        public Nullable<double> Discount 
+        {
+            get {return discount; }
+            set
+            {
+                discount = value;
+                OnPropertyChanged("Discount");
+            }
+        }
+        public string MainImagePath 
+        {
+            get { return mainImagePath; }
+            set
+            {
+                mainImagePath = value;
+                OnPropertyChanged("MainImagePath");
+            }
+        }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientService> ClientService { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServicePhoto> ServicePhoto { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
     }
 }

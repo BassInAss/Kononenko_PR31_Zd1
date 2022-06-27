@@ -52,6 +52,8 @@ namespace WORK_ONE.Views
             NewServiceForm serviceForm = new NewServiceForm();
             serviceForm.ShowDialog();
             list_serv.ItemsSource = ServiceViewModel.LoadList();
+            current_find = ServiceViewModel.LoadList();
+            current_filter = ServiceViewModel.LoadList();
             CountService.Content = $"Выведено {current_filter.Where(x => x.Title.Contains(temp)).Count() + 1} записей из {ServiceViewModel.LoadList().Count}";
         }
 
@@ -60,14 +62,17 @@ namespace WORK_ONE.Views
             NewServiceForm serviceForm = new NewServiceForm((Service)list_serv.SelectedItem);
             serviceForm.ShowDialog();
             list_serv.ItemsSource = ServiceViewModel.LoadList();
+            current_find = ServiceViewModel.LoadList();
+            current_filter = ServiceViewModel.LoadList();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             AddOrChangeService.DeleteService((Service)list_serv.SelectedItem);
             list_serv.ItemsSource = ServiceViewModel.LoadList();
+            current_find = ServiceViewModel.LoadList();
+            current_filter = ServiceViewModel.LoadList();
             CountService.Content = $"Выведено {current_filter.Where(x => x.Title.Contains(temp)).Count()} записей из {ServiceViewModel.LoadList().Count}";
-
         }
 
         private void DiscountComboFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)

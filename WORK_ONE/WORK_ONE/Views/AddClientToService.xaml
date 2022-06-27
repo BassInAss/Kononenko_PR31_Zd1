@@ -1,0 +1,55 @@
+﻿<Window x:Class="WORK_ONE.View_Models.AddClientToService"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WORK_ONE.View_Models"
+        mc:Ignorable="d" Background="Transparent"
+        WindowStyle="None" WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True" Icon="/Resourses/Images/DesignWindows/logo.png"
+        Title="Форма новой записи" Height="800" Width="500">
+    <Window.Resources>
+        <ResourceDictionary Source="/Resourses/Styles/ServiceFormStyle.xaml"/>
+    </Window.Resources>
+    <Grid>
+        <Border Style="{StaticResource BorderStyle}" >
+            <StackPanel>
+                <Button x:Name="Exit" Click="Exit_Click" Style="{StaticResource ExitButtonStyle}">
+                    <Image Source="/Resourses/Images/DesignWindows/exit.png"/>
+                </Button>
+                <Label Content="Форма добавление записи" Style="{StaticResource H2}"/>
+                <Label Content="Выбранная услуга:" Margin="35 50 0 0"/>
+                <Border Style="{StaticResource BorderStyle}" CornerRadius="10" Margin="30 5 30 5" BorderBrush="#ff4a6d" BorderThickness="2">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Название услуги:"/>
+                            <Label Content="{Binding Title}" Margin="0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Длительность:"/>
+                            <Label Content="{Binding DurationInSeconds}" Margin="0"/>
+                            <Label Content="минут" Margin="0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <Label Content="Клиент:"/>
+                <ComboBox x:Name="ClientsCombo" Style="{StaticResource ClientsCombo}" SelectedIndex="1">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding}" Style="{StaticResource ClentsComboItems}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Label Content="Время записи:"/>
+                <Border Style="{StaticResource BorderTextArea}" HorizontalAlignment="Left" Margin="35 0 0 0" Width="60">
+                    <TextBox x:Name="AddTime" PreviewTextInput="AddTime_PreviewTextInput" MaxLength="5" PreviewKeyUp="AddTime_PreviewKeyUp" TextChanged="AddTime_TextChanged"/>
+                </Border>
+                <Label Content="Дата:"/>
+                <Border Style="{StaticResource BorderTextArea}" Padding="0" Width="200" HorizontalAlignment="Left" Margin="35 0 0 0">
+                    <DatePicker x:Name="Date"/>
+                </Border>
+                <Button Content="Записать" x:Name="AddClientService" Click="AddClientService_Click" Style="{StaticResource EnterButtonStyle}" Margin="0 220 0 0"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

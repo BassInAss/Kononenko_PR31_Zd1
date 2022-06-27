@@ -1,0 +1,94 @@
+﻿<Window x:Class="WORK_ONE.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WORK_ONE.Views"
+        mc:Ignorable="d" WindowState="Maximized"
+        Title="Окно услуг" Height="768" Width="1366"
+        Closing="Window_Closing" Icon="/Resourses/Images/DesignWindows/logo.png">
+    <Window.Resources>
+        <ResourceDictionary Source="/Resourses/Styles/MainWindowStyle.xaml"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.12*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Список услуг" HorizontalAlignment="Center" VerticalAlignment="Bottom" Style="{StaticResource H2}" Margin="0 0 0 40"/>
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name  ="AddServiceButton" Click="AddServiceButton_Click" Content="Добавить услугу" Style="{StaticResource AddButtonStyle}" Margin="5" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+            <Button x:Name  ="CloseClientToService" Click="CloseClientToService_Click" Content="Ближайшие записи" Style="{StaticResource AddButtonStyle}" Margin="5" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 10 5">
+            <Label Content="Фильтр скидки:" Style="{StaticResource NameProductLabelStyle}" VerticalAlignment="Bottom" Margin="20 0 0 0"/>
+            <ComboBox x:Name="DiscountComboFilter" SelectionChanged="DiscountComboFilter_SelectionChanged" Style="{StaticResource Filter}" Margin="0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Style="{StaticResource  FilterItem}" Content="{Binding}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Поиск:" Style="{StaticResource NameProductLabelStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20 0 0 0"/>
+                <Border Style="{StaticResource BorderTextArea}" VerticalAlignment="Bottom">
+                    <TextBox PreviewTextInput="TextBox_PreviewTextInput" x:Name="Find" PreviewKeyDown="Find_PreviewKeyDown"/>
+                </Border>
+            </StackPanel>
+            <Label Content="Сортировать по цене ↓" Style="{StaticResource SortLabel}" VerticalAlignment="Bottom" x:Name="SortLabel" PreviewMouseLeftButtonDown="SortLabel_PreviewMouseLeftButtonDown"/>
+        </StackPanel>
+        <Label x:Name="ISADMIN" Visibility="Collapsed"/>
+        <Label Grid.Row="1" Content="Ничего не найдено.." FontSize="18" Foreground="SlateGray" x:Name="NoFind" Visibility="Collapsed" Margin="60 60 0 0"/>
+        <ListBox x:Name="list_serv" Grid.Row="1" Background="Transparent" BorderBrush="Transparent">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <ContentPresenter/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Style="{StaticResource BorderElement}" Background="{Binding Discount, Converter={StaticResource  DiscountConverterBackground}}">
+                        <StackPanel Orientation="Horizontal">
+                            <Border Style="{StaticResource BorderImage}">
+                                <Image Source="{Binding MainImagePath}"/>
+                            </Border>
+                            <StackPanel Margin="50 10 0 0">
+                                <Label Content="{Binding Title}" Style="{StaticResource NameProductLabelStyle}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Cost}" TextDecorations="{Binding Discount, Converter={StaticResource StrikelineConverter}}" Style="{StaticResource TextBlockProductStyle}"/>
+                                    <Label Content="рублей" Style="{StaticResource NameProductLabelStyle}"/>
+                                    <Label Content="за " Style="{StaticResource NameProductLabelStyle}"/>
+                                    <Label Content="{Binding DurationInSeconds}" Style="{StaticResource NameProductLabelStyle}"/>
+                                    <Label Content="минут" Style="{StaticResource NameProductLabelStyle}"/>
+                                </StackPanel>
+                                <TextBlock Visibility="{Binding Discount, Converter={StaticResource DiscountConverter}}" Style="{StaticResource DiscountText}">
+                                    <TextBlock.Text>
+                                        <MultiBinding Converter="{StaticResource DiscountConverterProcess}">
+                                            <Binding Path="Discount"/>
+                                            <Binding Path="Cost"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                <StackPanel Orientation="Horizontal" Margin="0 90 0 0">
+                                    <Label Content="Редактировать"  x:Name="ChangeButton" PreviewMouseLeftButtonUp="ChangeButton_Click" Style="{StaticResource ButtonsStyle}"/>
+                                    <Label Content="Удалить" x:Name="DeleteButton" PreviewMouseLeftButtonUp="DeleteButton_Click" Style="{StaticResource ButtonsStyle}"/>
+                                    <Label Content="Записать клиента" x:Name="AddClientToService" PreviewMouseLeftButtonUp="AddClientToService_PreviewMouseLeftButtonUp" Style="{StaticResource ButtonsStyle}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Background="#e1e4ff" Grid.Row="2">
+            <Label Content="Выведено 0 записей из 100" x:Name="CountService" Style="{StaticResource NameProductLabelStyle}" HorizontalAlignment="Right"/>
+        </StackPanel>
+    </Grid>
+</Window>

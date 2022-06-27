@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="224aab0f85d04a8ab3700357d4b1cdf2" Name="Diagram1" ZoomLevel="97">
+        <EntityTypeShape EntityType="BrowsModel.Client" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrowsModel.ClientService" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrowsModel.DocumentByService" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrowsModel.Gender" Width="1.5" PointX="1.5" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrowsModel.Manufacturer" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrowsModel.Product" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrowsModel.ProductPhoto" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrowsModel.ProductSale" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrowsModel.Service" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrowsModel.ServicePhoto" Width="1.5" PointX="3" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BrowsModel.Tag" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
+        <AssociationConnector Association="BrowsModel.FK_Client_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="BrowsModel.FK_ClientService_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="BrowsModel.FK_ClientService_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="BrowsModel.FK_DocumentByService_ClientService" ManuallyRouted="false" />
+        <AssociationConnector Association="BrowsModel.FK_ProductSale_ClientService" ManuallyRouted="false" />
+        <AssociationConnector Association="BrowsModel.FK_Product_Manufacturer" ManuallyRouted="false" />
+        <AssociationConnector Association="BrowsModel.FK_ProductPhoto_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="BrowsModel.FK_ProductSale_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="BrowsModel.FK_ServicePhoto_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="BrowsModel.AttachedProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="BrowsModel.TagOfClient" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

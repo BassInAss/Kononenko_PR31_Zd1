@@ -1,0 +1,38 @@
+﻿<Window x:Class="WORK_ONE.Views.AuthPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WORK_ONE"
+        mc:Ignorable="d" Background="Transparent"
+        WindowStyle="None" WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True" Icon="/Resourses/Images/DesignWindows/logo.png"
+        Title="Салон красоты 'Бархатные бровки'" Height="768" Width="500">
+    <Window.Resources>
+        <ResourceDictionary Source="/Resourses/Styles/AuthStyle.xaml"/>
+    </Window.Resources>
+    <Grid>
+        <Border Style="{StaticResource BorderStyle}">
+            <StackPanel>
+                <Button x:Name="Exit" Click="Exit_Click" Style="{StaticResource ExitButtonStyle}">
+                    <Image Source="/Resourses/Images/DesignWindows/exit.png"/>
+                </Button>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource ImageH1}">
+                    <Image Source="/Resourses/Images/DesignWindows/logo.png" Style="{StaticResource LogoImage}"/>
+                    <StackPanel VerticalAlignment="Center">
+                        <Label Content="Салон красоты" Style="{StaticResource H1}"/>
+                        <Label Content="Бархатные бровки" Style="{StaticResource H1}"/>
+                    </StackPanel>
+                </StackPanel>
+                <Label Content="Авторизация" Style="{StaticResource H2}"/>
+                <StackPanel Style="{StaticResource ContainerStyle}">
+                    <Label Content="Введите код"/>
+                    <Border Style="{StaticResource BorderPasswordBoxStyle}">
+                        <PasswordBox x:Name="PassText"/>
+                    </Border>
+                </StackPanel>
+                <Button Content="Войти" x:Name="EnterButton" Style="{StaticResource EnterButtonStyle}" Click="EnterButton_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
